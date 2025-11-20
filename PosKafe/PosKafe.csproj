@@ -78,6 +78,7 @@
     <Compile Include="DAO\DataProvider.cs" />
     <Compile Include="DAO\MenuDAO.cs" />
     <Compile Include="DAO\TaiKhoanDAO.cs" />
+    <Compile Include="DTO\AccountDTO.cs" />
     <Compile Include="DTO\BillInfoDTO.cs" />
     <Compile Include="DTO\NhomSanPhamDTO.cs" />
     <Compile Include="DTO\SanPhamDTO.cs" />
@@ -154,6 +155,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form_main.resx">
       <DependentUpon>Form_main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_NhanSu.resx">
+      <DependentUpon>Form_NhanSu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form_QuanLyKho.resx">
       <DependentUpon>Form_QuanLyKho.cs</DependentUpon>

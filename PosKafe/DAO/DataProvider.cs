@@ -15,7 +15,7 @@ namespace PosKafe.DAO
         // Lấy Server name từ SSMS
         private static string str_ConnecLaptop = @"Data Source=DESKTOP-O1141BR;Initial Catalog=quanlyquanCafe;Integrated Security=True;Connect Timeout=30;Encrypt=False;";
         private static string str_Desktop = @"Data Source=192.168.1.207,1433;Initial Catalog=quanlyquanCafe;User Id=sa;Password=tuananh_1098;TrustServerCertificate=True;";
-        private string connectionString = str_ConnecLaptop;
+        private string connectionString = str_Desktop;
 
         //2. Singleton Pattern (để gọi DataProvider dễ dàng hơn)
         // Đảm bảo chỉ có 1 instance được thể hiện của Provider
