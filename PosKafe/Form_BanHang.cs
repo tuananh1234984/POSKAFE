@@ -18,6 +18,7 @@ using PosKafe.BUS;
 using Button = System.Windows.Forms.Button;
 using System.Net;
 using System.Net.Mail;
+using System.ComponentModel;
 
 namespace PosKafe
 {
@@ -391,6 +392,22 @@ namespace PosKafe
                 {
                     MetroMessageBox.Show(this, "Thanh toán thành công (Không gửi mail)", "Thành công");
                 }
+                DialogResult hoiIn = MessageBox.Show("Bạn có muốn in hóa đơn không?", "In Ấn", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (hoiIn == DialogResult.Yes)
+                {
+                    // Tạo mới đối tượng Preview mỗi lần bấm để tránh lỗi lưu cache cũ
+                    PrintPreviewDialog preview = new PrintPreviewDialog();
+
+                    // Gắn hóa đơn vào để nó biết cần vẽ cái gì
+                    preview.Document = pdocHoaDon;
+
+                    // Phóng to cửa sổ cho dễ nhìn
+                    ((Form)preview).WindowState = FormWindowState.Maximized;
+
+                    // Hiện bảng Xem trước (Màu xám)
+                    preview.ShowDialog();
+                }
+                pdocHoaDon.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("K80", 300, 2000);
 
                 //2. Reset màn hình
                 currentBill.Clear();
@@ -583,6 +600,133 @@ namespace PosKafe
         private void giảmSốLượngToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             XulyGiamMon();
+        }
+
+        private void pdocHoaDon_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            Graphics graphics = e.Graphics;
+
+            // Font chữ
+            Font fontTitle = new Font("Courier New", 14, FontStyle.Bold); // Tiêu đề to
+            Font fontBold = new Font("Courier New", 9, FontStyle.Bold);   // Chữ đậm
+            Font fontRegular = new Font("Courier New", 9, FontStyle.Regular); // Chữ thường
+
+            // Cấu hình lề
+            float yPos = 10;
+            int leftMargin = 10;
+            int rightMargin = 280; // Chiều rộng khổ in ~280-290 là đẹp
+
+            // Căn lề
+            StringFormat centerFormat = new StringFormat() { Alignment = StringAlignment.Center };
+            StringFormat rightFormat = new StringFormat() { Alignment = StringAlignment.Far };
+
+            // --- 1. HEADER ---
+            // Tên quán
+            graphics.DrawString("POS KAFE", fontTitle, Brushes.Black, new RectangleF(0, yPos, 300, 25), centerFormat);
+            yPos += 25;
+
+            // Địa chỉ
+            graphics.DrawString("ĐC: 123 Đường ABC, Quận X", fontRegular, Brushes.Black, new RectangleF(0, yPos, 300, 20), centerFormat);
+            yPos += 15;
+
+            // SĐT
+            graphics.DrawString("SĐT: 0909.123.456", fontRegular, Brushes.Black, new RectangleF(0, yPos, 300, 20), centerFormat);
+            yPos += 15;
+
+            // Đường kẻ
+            graphics.DrawString("---------------------------------------", fontRegular, Brushes.Black, leftMargin, yPos);
+            yPos += 15;
+
+            // Tiêu đề hóa đơn
+            graphics.DrawString("HÓA ĐƠN THANH TOÁN", fontBold, Brushes.Black, new RectangleF(0, yPos, 300, 20), centerFormat);
+            yPos += 20;
+
+            // Ngày giờ & Nhân viên
+            graphics.DrawString("Ngày: " + DateTime.Now.ToString("dd/MM/yyyy HH:mm"), fontRegular, Brushes.Black, leftMargin, yPos);
+            yPos += 15;
+            graphics.DrawString("Nhân viên: Admin", fontRegular, Brushes.Black, leftMargin, yPos);
+            yPos += 15;
+
+            // Đường kẻ
+            graphics.DrawString("---------------------------------------", fontRegular, Brushes.Black, leftMargin, yPos);
+            yPos += 15;
+
+            // --- 2. DANH SÁCH MÓN ---
+            // Tiêu đề cột
+
+            decimal tongTienGoc = 0;
+
+            graphics.DrawString("Tên món", fontBold, Brushes.Black, leftMargin, yPos);
+            graphics.DrawString("SL", fontBold, Brushes.Black, 190, yPos); // Dời SL ra 190
+            graphics.DrawString("T.Tiền", fontBold, Brushes.Black, rightMargin, yPos, rightFormat);
+            yPos += 20;
+
+            // --- SỬA LẠI VÒNG LẶP IN MÓN ---
+            foreach (var item in currentBill)
+            {
+                // 1. CỘT TÊN MÓN (Quan trọng nhất)
+                // Ta quy định tên món chỉ được nằm trong độ rộng 170 đơn vị.
+                // Nếu tên dài quá, nó sẽ tự động xuống dòng trong cái khung này.
+                RectangleF rectTenMon = new RectangleF(leftMargin, yPos, 170, 40);
+                graphics.DrawString(item.TenSanPham, fontRegular, Brushes.Black, rectTenMon);
+
+                // 2. CỘT SỐ LƯỢNG (Canh ở vị trí 190)
+                // Căn giữa cho đẹp (Hoặc căn trái tùy ý)
+                StringFormat centerSL = new StringFormat() { Alignment = StringAlignment.Center };
+                graphics.DrawString(item.SoLuong.ToString(), fontRegular, Brushes.Black, 200, yPos, centerSL);
+
+                // 3. CỘT THÀNH TIỀN (Căn phải ở lề phải)
+                graphics.DrawString(item.ThanhTien.ToString("N0"), fontRegular, Brushes.Black, rightMargin, yPos, rightFormat);
+
+                // 4. TÍNH TOÁN XUỐNG DÒNG THÔNG MINH
+                // Nếu tên món dài quá (> 25 ký tự) thì nó chiếm 2 dòng -> Phải cộng yPos nhiều hơn
+                if (item.TenSanPham.Length > 25)
+                {
+                    yPos += 30; // Xuống dòng rộng hơn
+                }
+                else
+                {
+                    yPos += 20; // Xuống dòng bình thường
+                }
+
+                tongTienGoc += item.ThanhTien;
+            }
+
+                graphics.DrawString("---------------------------------------", fontRegular, Brushes.Black, leftMargin, yPos);
+            yPos += 15;
+
+            // --- 3. TỔNG KẾT TIỀN ---
+
+            // Lấy VAT từ giao diện
+            int thueVAT = 0;
+            int.TryParse(cbVAT.Text, out thueVAT);
+            decimal tienThue = tongTienGoc * thueVAT / 100;
+            decimal tongCong = tongTienGoc + tienThue;
+
+            // Tạm tính
+            graphics.DrawString("Tạm tính:", fontRegular, Brushes.Black, 100, yPos);
+            graphics.DrawString(tongTienGoc.ToString("N0"), fontBold, Brushes.Black, rightMargin, yPos, rightFormat);
+            yPos += 15;
+
+            // VAT (Nếu có)
+            if (thueVAT > 0)
+            {
+                graphics.DrawString($"Thuế VAT ({thueVAT}%):", fontRegular, Brushes.Black, 100, yPos);
+                graphics.DrawString(tienThue.ToString("N0"), fontBold, Brushes.Black, rightMargin, yPos, rightFormat);
+                yPos += 15;
+            }
+
+            // Tổng cộng (To và Đậm)
+            yPos += 5;
+            graphics.DrawString("TỔNG CỘNG:", fontBold, Brushes.Black, leftMargin, yPos);
+            graphics.DrawString(tongCong.ToString("N0") + " đ", new Font("Courier New", 12, FontStyle.Bold), Brushes.Black, rightMargin, yPos - 2, rightFormat);
+
+            yPos += 30;
+
+            // --- 4. FOOTER ---
+            graphics.DrawString("Cảm ơn quý khách & Hẹn gặp lại!", new Font("Courier New", 8, FontStyle.Italic), Brushes.Black, new RectangleF(0, yPos, 300, 20), centerFormat);
+            yPos += 15;
+            graphics.DrawString("Wifi: PosKafe / Pass: 12345678", new Font("Courier New", 8, FontStyle.Regular), Brushes.Black, new RectangleF(0, yPos, 300, 20), centerFormat);
         }
     }
 }
