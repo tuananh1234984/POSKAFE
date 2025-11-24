@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MetroFramework.Forms;
 using MetroFramework;
+using PosKafe.DTO;
 
 
 namespace PosKafe
@@ -16,10 +17,14 @@ namespace PosKafe
     public partial class Form_main : MetroForm
     {
         private Form activeForm = null;
-        public Form_main()
+        private AccountDTO loginAccount;
+        public Form_main(AccountDTO acc)
         {
             InitializeComponent();
             this.WindowState = FormWindowState.Maximized;
+            this.loginAccount = acc;
+
+            this.Text = "POS Kafe - Đăng nhập với tài khoản: " + acc.DisplayName;
         }
 
         private void FormLoad(Form formCon)
@@ -70,7 +75,12 @@ namespace PosKafe
 
         private void tileCaiDat_Click(object sender, EventArgs e)
         {
-            FormLoad(new Form_CaiDat());
+            FormLoad(new Form_CaiDat(loginAccount));
+        }
+
+        private void Form_main_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using MetroFramework.Forms;
 using MetroFramework;
 using PosKafe.BUS;
+using PosKafe.DTO;
+using PosKafe.DAO;
 
 namespace PosKafe
 {
@@ -35,11 +37,16 @@ namespace PosKafe
             // Gọi hàm KiemTraDangNhap từ TaiKhoanBus
             try
             {
-                if (TaiKhoanBus.Instance.KiemTraDangNhap(username, password)){
-                    // Đăng nhập thành công -> Đóng form login điều hướng dến form_main
-                    MetroMessageBox.Show(this, "Đăng nhập thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.DialogResult = DialogResult.OK;
-                    this.Close();
+                if (TaiKhoanDao.Instance.KiemTraDangNhap(username, password)){
+                    AccountDTO loginAccount = TaiKhoanDao.Instance.GetAccountByUserName(username);
+
+                    Form_main f = new Form_main(loginAccount);
+
+                    this.Hide();
+                    f.ShowDialog();
+
+                    this.Show();
+                    txtPassword.Clear();
                 }
                 else
                 {

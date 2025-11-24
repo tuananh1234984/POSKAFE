@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PosKafe.DTO;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
@@ -39,6 +40,18 @@ namespace PosKafe.DAO
             // Nếu có ít nhất 1 hàng (row) trong DataTable thì đăng nhập thành công
             // Ngược lại đăng nhập thất bại
             return result.Rows.Count > 0;
+        }
+
+        public AccountDTO GetAccountByUserName(string tenDangNhap)
+        {
+            string query = "SELECT * FROM TaiKhoan WHERE TenDangNhap = N'" + tenDangNhap + "'";
+            DataTable data = DataProvider.Instance.ExecuteQuery(query);
+
+            foreach (DataRow item in data.Rows)
+            {
+                return new AccountDTO(item);
+            }
+            return null;
         }
 
         // =============================================================================
