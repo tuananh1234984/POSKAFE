@@ -60,17 +60,19 @@
             this.panelMenu.Controls.Add(this.label1);
             this.panelMenu.Controls.Add(this.pictureBox1);
             this.panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panelMenu.Location = new System.Drawing.Point(20, 60);
+            this.panelMenu.Location = new System.Drawing.Point(15, 49);
+            this.panelMenu.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panelMenu.Name = "panelMenu";
-            this.panelMenu.Size = new System.Drawing.Size(248, 1000);
+            this.panelMenu.Size = new System.Drawing.Size(187, 813);
             this.panelMenu.TabIndex = 0;
             // 
             // tileDangXuat
             // 
             this.tileDangXuat.ActiveControl = null;
-            this.tileDangXuat.Location = new System.Drawing.Point(17, 691);
+            this.tileDangXuat.Location = new System.Drawing.Point(13, 561);
+            this.tileDangXuat.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tileDangXuat.Name = "tileDangXuat";
-            this.tileDangXuat.Size = new System.Drawing.Size(199, 51);
+            this.tileDangXuat.Size = new System.Drawing.Size(149, 41);
             this.tileDangXuat.TabIndex = 10;
             this.tileDangXuat.Text = "Đăng xuất";
             this.tileDangXuat.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -83,9 +85,10 @@
             // tileCaiDat
             // 
             this.tileCaiDat.ActiveControl = null;
-            this.tileCaiDat.Location = new System.Drawing.Point(17, 622);
+            this.tileCaiDat.Location = new System.Drawing.Point(13, 505);
+            this.tileCaiDat.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tileCaiDat.Name = "tileCaiDat";
-            this.tileCaiDat.Size = new System.Drawing.Size(199, 51);
+            this.tileCaiDat.Size = new System.Drawing.Size(149, 41);
             this.tileCaiDat.TabIndex = 9;
             this.tileCaiDat.Text = "Cài Đặt";
             this.tileCaiDat.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -99,9 +102,10 @@
             // tileQuanLyNhanSu
             // 
             this.tileQuanLyNhanSu.ActiveControl = null;
-            this.tileQuanLyNhanSu.Location = new System.Drawing.Point(17, 549);
+            this.tileQuanLyNhanSu.Location = new System.Drawing.Point(13, 446);
+            this.tileQuanLyNhanSu.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tileQuanLyNhanSu.Name = "tileQuanLyNhanSu";
-            this.tileQuanLyNhanSu.Size = new System.Drawing.Size(199, 51);
+            this.tileQuanLyNhanSu.Size = new System.Drawing.Size(149, 41);
             this.tileQuanLyNhanSu.TabIndex = 8;
             this.tileQuanLyNhanSu.Text = "Nhân sự";
             this.tileQuanLyNhanSu.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -115,9 +119,10 @@
             // tileQuanLyKhuyenMai
             // 
             this.tileQuanLyKhuyenMai.ActiveControl = null;
-            this.tileQuanLyKhuyenMai.Location = new System.Drawing.Point(17, 474);
+            this.tileQuanLyKhuyenMai.Location = new System.Drawing.Point(13, 385);
+            this.tileQuanLyKhuyenMai.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tileQuanLyKhuyenMai.Name = "tileQuanLyKhuyenMai";
-            this.tileQuanLyKhuyenMai.Size = new System.Drawing.Size(199, 51);
+            this.tileQuanLyKhuyenMai.Size = new System.Drawing.Size(149, 41);
             this.tileQuanLyKhuyenMai.TabIndex = 7;
             this.tileQuanLyKhuyenMai.Text = "Khuyến mãi";
             this.tileQuanLyKhuyenMai.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -131,9 +136,10 @@
             // tileQuanLyKho
             // 
             this.tileQuanLyKho.ActiveControl = null;
-            this.tileQuanLyKho.Location = new System.Drawing.Point(17, 398);
+            this.tileQuanLyKho.Location = new System.Drawing.Point(13, 323);
+            this.tileQuanLyKho.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tileQuanLyKho.Name = "tileQuanLyKho";
-            this.tileQuanLyKho.Size = new System.Drawing.Size(199, 51);
+            this.tileQuanLyKho.Size = new System.Drawing.Size(149, 41);
             this.tileQuanLyKho.TabIndex = 6;
             this.tileQuanLyKho.Text = "Quản lý Kho";
             this.tileQuanLyKho.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -147,9 +153,10 @@
             // tileQuanLyMenu
             // 
             this.tileQuanLyMenu.ActiveControl = null;
-            this.tileQuanLyMenu.Location = new System.Drawing.Point(17, 324);
+            this.tileQuanLyMenu.Location = new System.Drawing.Point(13, 263);
+            this.tileQuanLyMenu.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tileQuanLyMenu.Name = "tileQuanLyMenu";
-            this.tileQuanLyMenu.Size = new System.Drawing.Size(199, 51);
+            this.tileQuanLyMenu.Size = new System.Drawing.Size(149, 41);
             this.tileQuanLyMenu.TabIndex = 5;
             this.tileQuanLyMenu.Text = "Quản lý Menu";
             this.tileQuanLyMenu.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -163,9 +170,10 @@
             // tileBaoCao
             // 
             this.tileBaoCao.ActiveControl = null;
-            this.tileBaoCao.Location = new System.Drawing.Point(17, 251);
+            this.tileBaoCao.Location = new System.Drawing.Point(13, 204);
+            this.tileBaoCao.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tileBaoCao.Name = "tileBaoCao";
-            this.tileBaoCao.Size = new System.Drawing.Size(199, 51);
+            this.tileBaoCao.Size = new System.Drawing.Size(149, 41);
             this.tileBaoCao.TabIndex = 4;
             this.tileBaoCao.Text = "Báo cáo";
             this.tileBaoCao.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -181,9 +189,10 @@
             this.tileBanHang.ActiveControl = null;
             this.tileBanHang.BackColor = System.Drawing.SystemColors.Control;
             this.tileBanHang.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.tileBanHang.Location = new System.Drawing.Point(17, 180);
+            this.tileBanHang.Location = new System.Drawing.Point(13, 146);
+            this.tileBanHang.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tileBanHang.Name = "tileBanHang";
-            this.tileBanHang.Size = new System.Drawing.Size(199, 51);
+            this.tileBanHang.Size = new System.Drawing.Size(149, 41);
             this.tileBanHang.TabIndex = 3;
             this.tileBanHang.Text = "Bán Hàng";
             this.tileBanHang.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -200,9 +209,10 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label1.Location = new System.Drawing.Point(122, 31);
+            this.label1.Location = new System.Drawing.Point(92, 25);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(94, 66);
+            this.label1.Size = new System.Drawing.Size(79, 58);
             this.label1.TabIndex = 2;
             this.label1.Text = "POS\r\nKAFE\r\n";
             // 
@@ -210,9 +220,10 @@
             // 
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(17, 3);
+            this.pictureBox1.Location = new System.Drawing.Point(13, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(124, 120);
+            this.pictureBox1.Size = new System.Drawing.Size(93, 98);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -220,19 +231,23 @@
             // panelContent
             // 
             this.panelContent.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelContent.Location = new System.Drawing.Point(268, 60);
+            this.panelContent.Location = new System.Drawing.Point(202, 49);
+            this.panelContent.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panelContent.Name = "panelContent";
-            this.panelContent.Size = new System.Drawing.Size(1632, 1000);
+            this.panelContent.Size = new System.Drawing.Size(1223, 813);
             this.panelContent.TabIndex = 1;
             // 
             // Form_main
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1920, 1080);
+            this.ClientSize = new System.Drawing.Size(1440, 878);
             this.Controls.Add(this.panelContent);
             this.Controls.Add(this.panelMenu);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Form_main";
+            this.Padding = new System.Windows.Forms.Padding(15, 49, 15, 16);
+            this.Load += new System.EventHandler(this.Form_main_Load);
             this.panelMenu.ResumeLayout(false);
             this.panelMenu.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

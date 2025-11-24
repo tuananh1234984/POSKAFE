@@ -18,7 +18,7 @@ namespace PosKafe.DTO
         {
             this.Username = row["TenDangNhap"].ToString();
             this.DisplayName = row["TenHienThi"].ToString();
-            this.Password = row["Password"].ToString();
+            this.Password = row["MatKhau"].ToString();
             this.Type = (int)row["LoaiTaiKhoan"];
         }
     }
