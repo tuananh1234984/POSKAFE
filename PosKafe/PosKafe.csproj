@@ -159,6 +159,9 @@
     <EmbeddedResource Include="Form_CaiDat.resx">
       <DependentUpon>Form_CaiDat.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Form_KhuyenMai.resx">
+      <DependentUpon>Form_KhuyenMai.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form_login.resx">
       <DependentUpon>Form_login.cs</DependentUpon>
     </EmbeddedResource>
